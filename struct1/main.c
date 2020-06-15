@@ -8,74 +8,44 @@
 
 #include <stdio.h>
 
-
 int main() {
-  
-    int hour[3], i;
-    
-    printf("Type what time your apointment is (hour, minute, second): \n");
-    for (i = 0; i < 3; i++){
-        if (i > 0){
-            printf(":");
-        }
-        fseek(stdin, 0, SEEK_END);
-        scanf(" %d", &hour[i]);
-    }
-    
-    int date[3];
-    
-    printf("Type the date of your apointment (day, month, year): \n");
-    for (i = 0; i < 3; i++){
-        if (i > 0){
-            printf("/");
-        }
-        fseek(stdin, 0, SEEK_END);
-        scanf(" %d", &date[i]);
-       
-    }
-    
-    char description[60];
-    
-    printf("Add a description: ");
+
+    struct Apointment{
+
+        int hour, minute;
+        int day, month, year;
+        char description[500];
+
+    };
+
+    struct Apointment apointment;
+
+    printf("Enter the date \n");
+    printf("Enter the day: ");
+    scanf("%d", &apointment.day);
+    printf("Enter the month: ");
+    scanf("%d", &apointment.month);
+    printf("Enter the year: ");
+    scanf("%d", &apointment.year);
+
+    printf("Enter the time \n");
+    printf("Enter the hour: ");
+    scanf("%d", &apointment.hour);
+    printf("Enter the minutes: ");
+    scanf("%d", &apointment.minute);
+
+    printf("Type a description: ");
     fseek(stdin, 0, SEEK_END);
-    gets(description);
-    
-    
-    printf("Hour: ");
-    
-    for (i = 0; i < 3; i++){
-        
-        if (i > 0) {
-            printf(":");
-        }
-        printf(" %d", hour[i]);
-    }
-    
-    printf("\n");
-    
+    gets(apointment.description);
+
+
     printf("Date: ");
-    
-    for (i = 0; i < 3; i++) {
-        
-        if (i > 0) {
-            printf("/");
-        }
-        printf(" %d", date[i]);
-    }
-    printf("\n");
-    printf("Description: %s\n", description);
-        
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    printf("%d / %d / %d\n", apointment.day, apointment.month, apointment.year);
+    printf("Time: ");
+    printf("%d:%d\n", apointment.hour, apointment.minute);
+    printf("Description: %s\n", apointment.description);
+
+
+
     return 0;
 }

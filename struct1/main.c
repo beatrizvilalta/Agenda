@@ -65,17 +65,5 @@ int main() {
     printf("\n");
     printf("Description: %s\n", description);
         
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     return 0;
 }

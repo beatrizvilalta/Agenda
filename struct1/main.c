@@ -8,18 +8,22 @@
 
 #include <stdio.h>
 
-int main() {
+typedef struct{
+    
+    int hour, minute;
+    int day, month, year;
+    char description[500];
 
-    struct Apointment{
+} Apointment;
 
-        int hour, minute;
-        int day, month, year;
-        char description[500];
-
-    };
-
-    struct Apointment apointment;
-
+Apointment createApointment(){
+    
+    Apointment apointment;
+    
+    printf("Add a description: ");
+    fseek(stdin, 0, SEEK_END);
+    gets(apointment.description);
+    
     printf("Enter the date \n");
     printf("Enter the day: ");
     scanf("%d", &apointment.day);
@@ -33,19 +37,34 @@ int main() {
     scanf("%d", &apointment.hour);
     printf("Enter the minutes: ");
     scanf("%d", &apointment.minute);
+    
+    return apointment;
+}
 
-    printf("Type a description: ");
-    fseek(stdin, 0, SEEK_END);
-    gets(apointment.description);
-
-
+void printApointment(Apointment apointment){
+    printf("Description: %s\n", apointment.description);
+    printf("\n");
     printf("Date: ");
     printf("%d / %d / %d\n", apointment.day, apointment.month, apointment.year);
     printf("Time: ");
     printf("%d:%d\n", apointment.hour, apointment.minute);
-    printf("Description: %s\n", apointment.description);
+}
 
+int main() {
 
+    Apointment firstApointment;
+    firstApointment = createApointment();
+    
+    Apointment secondApointment;
+    secondApointment = createApointment();
+    
+    printf("\n");
+    printf("Apointments: \n");
+    printf("\n");
+    printApointment(firstApointment);
+    printf("\n");
+    printApointment(secondApointment);
 
     return 0;
 }
+
